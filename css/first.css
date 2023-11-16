@@ -6,6 +6,11 @@
     padding:0;
 }
 
+input{
+    outline: none;
+    border: none;
+}
+
 *::selection{
     background-color: black;
     color: aqua;
@@ -16,6 +21,75 @@ a:link{
 }
 
 body{
-    height:100vh;
-    background:linear-gradient(to bottom right, aqua, lightgreen, cyan)
+
+    background:linear-gradient(to bottom right, aqua, lightgreen, cyan);
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+#container-form{
+    width:100vw;
+    height: 100vh;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center;
+}
+
+.none{
+    opacity: 0;
+    display: none;
+}
+
+.fixed{
+    display: flex;
+    position: fixed;
+}
+
+#form{
+    background-color: red;
+    border:solid black 2px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap:40px;
+    padding:50px 30px;
+    
+    position: absolute;
+}
+#form > p#read{
+    background-color: aqua;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* display: block; */
+    width:100%;
+}
+
+#form > p#read > label{
+    margin-right:auto;
+}
+
+#form > p {
+    position: relative;
+}
+
+#form > p > input:not([type="checkbox"]){
+    padding:10px 15px;
+}
+
+#form > p > label:not([for="readStatus"]){
+    position: absolute;
+    bottom:7px;
+    left:10px;
+    transition: .3s;
+    font-size:1rem
+}
+
+.active{
+    translate: 0 -15px;
+    font-size:.8rem
 }
