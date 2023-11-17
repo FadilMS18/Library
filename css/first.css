@@ -4,6 +4,7 @@
 *{
     margin:0;
     padding:0;
+    box-sizing: border-box;
 }
 
 input{
@@ -21,24 +22,23 @@ a:link{
 }
 
 body{
-
     background:linear-gradient(to bottom right, aqua, lightgreen, cyan);
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
 }
 
 #container-form{
     width:100vw;
     height: 100vh;
-    background-color: aqua;
+    background-color: rgba(0, 0, 0, .5);
     justify-content: center;
     align-items: center;
+    transition: .35s;
 }
+
 
 .none{
     opacity: 0;
     display: none;
+    z-index: 0;
 }
 
 .fixed{
@@ -47,21 +47,36 @@ body{
 }
 
 #form{
-    background-color: red;
+    background-color: lightgreen;
     border:solid black 2px;
+    border-radius:10px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    gap:40px;
-    padding:50px 30px;
+    gap:50px;
+    padding:90px 30px 50px;
     
     position: absolute;
+    box-shadow:0px 0px 15px 1px rgba(255, 255, 255, .2);
 }
+
+#container-form > #form > span#add-book{
+    position: absolute;
+    top:10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+#container-form > #form > span#add-book::before,
+#container-form > #form > span#add-book::after{
+    content:" ⭐ "
+}
+
 #form > p#read{
-    background-color: aqua;
+    /* background-color: aqua; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -69,27 +84,67 @@ body{
     width:100%;
 }
 
-#form > p#read > label{
-    margin-right:auto;
-}
 
 #form > p {
     position: relative;
 }
 
 #form > p > input:not([type="checkbox"]){
-    padding:10px 15px;
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom: 2px solid black;
+    padding:12px 15px;
+    width:320px;
+
+    
 }
 
 #form > p > label:not([for="readStatus"]){
     position: absolute;
-    bottom:7px;
+    bottom:9px;
     left:10px;
-    transition: .3s;
-    font-size:1rem
+    transition: .25s;
+    font-size:1.2rem;
+    pointer-events: none;
+    opacity:.8;
+    
 }
 
-.active{
-    translate: 0 -15px;
-    font-size:.8rem
+#form > p > label.active{
+    translate: 0 -40px;
+    font-size:1rem;
+    font-weight:bold;
+    opacity: 1;
+}
+
+#form > p#read > label{
+    font-size: 1.2rem;
+    font-weight:bold;
+    margin-right:auto;
+} 
+
+#form > p#read > label + input[type="checkbox"]{
+    height:25px;
+    width:25px;
+    cursor: pointer;
+}
+
+p#read > label + input:checked{
+    border: solid red 5px;
+}
+
+button#confirm{
+    padding:15px 40px;
+    margin-right:auto;
+    border-radius: 10px;
+    border:none;
+    background-color: aqua;
+    font-size: .95rem;
+    font-weight: 550;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, .3);
+}
+
+button#confirm:hover{
+    transform: scale(1.2);
 }

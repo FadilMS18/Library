@@ -1,9 +1,4 @@
-
-const button = document.querySelector("button")
-
-button.addEventListener("click",()=>{
-    
-})
+const body = document.querySelector("body")
 
 const myBook = []
 
@@ -29,32 +24,86 @@ function addBookToLibrary(a, b, c, d){
 
 const checkBox = document.querySelector(`input[type="checkbox"]`)
 
+// Form container(absolute layer), not the fixed layer
 const formContainer = document.querySelector("div#form")
-const info = Array.from(formContainer.querySelectorAll("input"))
 
+// Input Selector
+const info = Array.from(formContainer.querySelectorAll("p > input"))
+
+// P container for input & label
+const infoContainer = Array.from(formContainer.querySelectorAll("p"))
+
+// Label Selector excluding the checkbox
+const label = []
+infoContainer.forEach((but)=>{
+    let bel = but.querySelector("label")
+    label.push(bel)  
+})
+label.pop(label.length-1)
+
+// EventListener for every input
+function checkInputValue(){
+    for(let i = 0; i < 3; i++){
+        info[i].addEventListener("focus", ()=>{
+            label[i].classList.add("active")
+            info[i].addEventListener("focusout", ()=>{
+                if(info[i].value === ""){
+                    label[i].classList.remove("active")
+                }
+            })
+        })
+    }    
+}
+
+
+// window event listener to activate the form
+window.addEventListener("DOMContentLoaded", checkInputValue)
+
+
+// Confirm form document
 const confirm = formContainer.querySelector("button")
 
-const labelInput = Array.from(document.querySelectorAll(`#form > p > label:not([for="readStatus"])`))
+confirm.addEventListener("click", resetForm)
 
-info.forEach((input)=>{
-    input.addEventListener("focus", ()=>{
-        setTimeout(()=>{
-            labelInput.forEach((lab)=>{
-                lab.classList.add("active")
-            })
-        },1)
-        
-    })
-})
+function resetForm(){
+    if(checkValue()){
+        alert("You Need to fill All the field")
+        return
+    }
 
-confirm.addEventListener("click", ()=>{
     setTimeout(()=>{
         addBookToLibrary(info[0], info[1], info[2], info[3])
         info.forEach((input)=>{
             input.value = ""
             input.checked = false
+            resetValue()
         })
         console.log(myBook)
     },1)
-})
 
+    setTimeout(()=>{
+        fixedContainer.classList.add("none")
+    },1)
+    
+}
+
+// Reset the title class
+function resetValue(){
+    
+    for(let i = 0; i < 3; i++){
+        if(info[i].value === ""){
+            label[i].classList.remove("active")
+        }
+    }
+}
+
+// Check the required
+function checkValue(){
+    for(let i = 0; i < 3; i++){
+        if(info[i].value === ""){
+            return true  // If the input field is empty the object wont be push to the array
+        }else{return false} // Else the function will proceed to run
+    }
+}
+
+const fixedContainer = document.querySelector("div#container-form")

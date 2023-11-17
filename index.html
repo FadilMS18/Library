@@ -8,29 +8,52 @@
     <title>Library</title>
     <link rel="stylesheet" href="/css/first.css">
     <link rel="stylesheet" href="/css/second.css">
+    <link rel="stylesheet" href="/css/nav.css">
 </head>
 <body>
+    <nav id="nav-container">
+        <div>
+            <h1>Library Project</h1>
+        </div>
+        <div id="right-container">
+            <p>A</p>
+            <p>B</p>
+            <p>C</p>
+            <p>D</p>
+        </div>
+    </nav>
 
-    <div id="container-form" class="fixed">
+    <header id="header">
+        <button>Add New Book</button>
+        <div>
+            <h3>Don't forget to read</h3>
+            <p>This is 2023 and you still dont know how to read :()</p>
+        </div>
+        <button>Delete All Book</button>
+    </header>
+
+    <div id="container-form" class="fixed none">
+
         <div id="form" >
+            <span id="add-book">Add New Book</span>
             <p>
-                <label for="title">Title :</label>
-                <input type="text" name="title" id="title" >
+                <label for="title">Book Title :</label>
+                <input type="text" name="title" id="title" required autocomplete="off" autocapitalize=yes>
             </p>
             
             <p>
                 <label for="title">Author Name :</label>
-                <input type="text" name="author" id="author" >
+                <input type="text" name="author" id="author" required autocomplete="off">
             </p>
             <p>
-                <label for="pages">Number of pages :</label>
-                <input type="number" name="pages" id="pages" >
+                <label for="pages">Number of Pages :</label>
+                <input type="number" name="pages" id="pages" required autocomplete="off">
             </p>
             <p id="read">
-                <label for="readStatus">Have you read it ?</label>
-                <input type="checkbox" name="readStatus" id="readStatus" value="yes">
+                <label for="readStatus">I Already Finish The Book!</label>
+                <input type="checkbox" name="readStatus" id="readStatus" value="yes" >
             </p>
-            <button id="confirm">confirm</button>
+            <button id="confirm">Add Book</button>
         </div>  
     </div>
 
