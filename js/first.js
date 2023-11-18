@@ -14,7 +14,7 @@ function addBookToLibrary(a, b, c, d){
     let title = a.value
     let author = b.value
     let pages = c.value
-    c.checked ? read = "yes, i have" : read="No, i haven't"
+    let read = d.checked ? "yes, i have" : "No, i haven't"
 
     let book = new newBook(title, author, pages, read)
     myBook.push(book)

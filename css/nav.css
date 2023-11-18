@@ -1,6 +1,7 @@
 #nav-container{
     position: fixed;
     top:0;
+    z-index: 9999999;
     height: 71px;
     width:100%;
     background-color: rgba(0, 0, 0, .5);
