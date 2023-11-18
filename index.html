@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="/css/nav.css">
 </head>
 <body>
+    <!-- Sticky Navbar Start -->
     <nav id="nav-container">
-        <div>
-            <h1>Library Project</h1>
-        </div>
+        <h1>Library Project</h1>
+        
         <div id="right-container">
             <p>A</p>
             <p>B</p>
@@ -22,16 +22,26 @@
             <p>D</p>
         </div>
     </nav>
+    <!-- Sticky Navbar End -->
 
+    <!-- Header Start -->
     <header id="header">
-        <button>Add New Book</button>
-        <div>
-            <h3>Don't forget to read</h3>
-            <p>This is 2023 and you still dont know how to read :()</p>
-        </div>
-        <button>Delete All Book</button>
+        <section>
+            <div id="desc">
+                <h3>Don't Forget To </h3>
+                <p>This Is 2023 And You Still Don't Know How To </p>
+                <div id="add-remove-button">
+                    <button>Add New Book</button>
+                    <button>Delete All Book</button>
+                </div>
+            </div>
+        </section>
+        
+        
     </header>
+    <!-- Header End -->
 
+    <!-- Add New Book form Start -->
     <div id="container-form" class="fixed none">
 
         <div id="form" >
@@ -50,12 +60,13 @@
                 <input type="number" name="pages" id="pages" required autocomplete="off">
             </p>
             <p id="read">
-                <label for="readStatus">I Already Finish The Book!</label>
+                <label style="cursor: pointer;" for="readStatus">I Already Finish The Book!</label>
                 <input type="checkbox" name="readStatus" id="readStatus" value="yes" >
             </p>
             <button id="confirm">Add Book</button>
         </div>  
     </div>
+    <!-- Add New Book form End -->
 
     <script src="/js/first.js"></script>
     <script src="/js/second.js"></script>

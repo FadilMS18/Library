@@ -87,6 +87,10 @@ function resetForm(){
     
 }
 
+// Fixed container for the form
+const fixedContainer = document.querySelector("div#container-form")
+
+
 // Reset the title class
 function resetValue(){
     
@@ -100,10 +104,17 @@ function resetValue(){
 // Check the required
 function checkValue(){
     for(let i = 0; i < 3; i++){
-        if(info[i].value === ""){
+        if(info[0].value === "" || info[1].value === "" || info[2].value === ""){
             return true  // If the input field is empty the object wont be push to the array
         }else{return false} // Else the function will proceed to run
     }
 }
 
-const fixedContainer = document.querySelector("div#container-form")
+
+const addBookButton = document.querySelector("header#header > section > #desc > div > :first-child")
+
+addBookButton.addEventListener("click", ()=>{
+    setTimeout(()=>{
+        fixedContainer.classList.remove("none")
+    },1)
+})

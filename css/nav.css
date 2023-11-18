@@ -1,14 +1,40 @@
 #nav-container{
+    position: fixed;
+    top:0;
     height: 71px;
     width:100%;
-    background-color: red;
+    background-color: rgba(0, 0, 0, .5);
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 
-    padding:0 20px;
+    padding:0 5%;
+    color:white;
+}
+
+#nav-container > :first-child {
+    color: white;
+    cursor: pointer;
+    transition: .25s;
+}
+
+#nav-container > :first-child:hover{
+    transform: scale(1.2);
+    color: var(--def_font_color);
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, .8);
+}
+
+
+#nav-container > :last-child > p{
+    cursor: pointer;
+    transition: .2s;
+}
+
+#nav-container > :last-child > p:hover{
+    background-color: white;
+    color: var(--def_font_color);
 }
 
 #right-container{
@@ -22,38 +48,91 @@
 }
 
 header#header{
-    height: 200px;
+    height: 500px;
     width: 100%;
-    background-color: lightpink;
+    background:url(/assets/furniture-1.jpg) center no-repeat;
+    background-size: cover;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .4);
+}
+
+header#header > section {
+    width: 100%;
+    height: 100%;
+    background:linear-gradient(to right, rgba(255, 255, 255, 0), rgb(255, 255, 255, .8));
     display: flex;
-    justify-content: space-evenly;
-
-    /* padding:0px 0 0; */
-
+    justify-content: end;
+    padding: 71px 0 0;
 }
 
-#header > :first-child, #header > :last-child{
-    align-self: center;
-}
-
-#header > :nth-child(2){
+header#header > section > div{
     display: flex;
     flex-direction: column;
     align-items:center;
-    padding: 30px 0;
+    margin-right:10%;
+    margin-top:5%;
+    gap:5px;
 
-    gap:10px;
-    /* justify-content: center; */
-
+    font-size: 1.4rem;
+    font-weight: 600;
 }
 
-#nav-container > :last-child > p{
+header#header > section > div > :first-child:after{
+    content: " READ !!!";
+}
+
+header#header > section > div > :nth-child(2):after,
+header#header > section > div > :first-child:after{
+    color:var(--highlight_color);
+    font-size:1.6rem;
+}
+header#header > section > div > :nth-child(2):after{
+    content: " Read :()";
+}
+
+header#header > section > div :nth-child(1),
+header#header > section > div :nth-child(2){
+    color:var(--def_font_color)
+}
+
+header#header > section > div#desc > div{
+    display: flex;
+    margin-top: 20px;
+    gap:40px;
+}
+
+header#header > section > div#desc > div > button{
+    padding:10px 15px;
+    font-size: 1rem;
+
+    border:none;
+    border-radius:5px;
+    box-shadow: var(--def_bxs_black_small);
     cursor: pointer;
-    transition: .2s;
+    transition: .15s;
+
+    color:var(--def_font_color);
 }
 
-#nav-container > :last-child > p:hover{
+header#header > section > div#desc > div > button:first-child{
+    background-color: rgb(61, 255, 61);
+    border:2px solid rgb(61, 255,61);
+}
+
+header#header > section > div#desc > div > button:first-child:hover{
+    transform: scale(1.1);
     background-color: white;
-    /* border: solid 2px white; */
-    /* color: white; */
+    color: rgb(0, 155, 0);
+    box-shadow:var(--def_bxs_black_big);
+}
+
+header#header > section > div#desc > div > button:last-child{
+    background-color: red;
+    border: red 2px solid;
+}
+
+header#header > section > div#desc > div > button:last-child:hover{
+    transform: scale(1.2);
+    background-color: white;
+    color: red;
+    box-shadow:var(--def_bxs_black_big);
 }
