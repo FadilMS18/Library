@@ -55,8 +55,22 @@ main > section > div{
     padding:20px 30px;
     position: relative;
     overflow: hidden;
-
+    transition: .3s;
+    opacity: 1;
 }
+
+main > section > div.noneDisplay{
+    opacity: 0;
+    pointer-events: none;
+    scale: 1.2;
+}
+
+main >section > div:hover{
+    transform: scale(1.01);
+}
+
+
+
 
 main > section > div > :first-child{
     position: absolute;
@@ -108,14 +122,57 @@ main > section > div > p:last-of-type{
     font-size: 1.2rem;
     margin-top:20px;
     display: flex;
+    flex-direction: column;
+    align-items: start; 
     gap:20px;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
 }
 
-main >section > div > p:last-of-type::before{
-    content: "Read Status : ";
-    display: block;
-    margin-bottom:20px
+main > section > div > p:last-of-type > span:last-of-type{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
 }
 
+main > section > div > p:last-of-type > span:last-of-type> button{
+    padding:5px 10px;
+    border:none;
+    border-radius: 5px;
+    box-shadow: var(--def_bxs_black_small);
+    cursor: pointer;
+    transition: .2s;
+    font-size: 1.5rem;
+    
+    /* background-color: rgb(192, 255, 192); color active readStatus Yes */
+    /* background-color: rgb(255, 173, 173); color active readStatus no */
+}
+
+main > section > div > p:last-of-type > span:last-of-type> button:hover{
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.yes{
+    background-color: rgb(192, 255, 192);
+}
+
+.yes::before{
+    content : " ✅ "
+}
+.no::before{
+    content : " ❌ "
+}
+
+.no{
+    background-color: rgb(255, 168, 168)
+}
+
+.not-confirm{
+    opacity:0.5
+}
+
+.confirm-read{
+    scale: 1.5;
+    opacity: 1;
+}

@@ -2,6 +2,9 @@ const body = document.querySelector("body")
 
 const myBook = []
 
+const yesButton = document.querySelector("#book-container > div > p:last-of-type > :last-child > button:first-child")
+const noButton = document.querySelector("#book-container > div > p:last-of-type > :last-child > button:last-child")
+
 
 function newBook(a, b, c, d){
     this.title = a
@@ -14,10 +17,12 @@ function addBookToLibrary(a, b, c, d){
     let title = a.value
     let author = b.value
     let pages = c.value
-    let read = d.checked ? "yes, i have" : "No, i haven't"
+    let read = d.checked ? true : false
 
-    let book = new newBook(title, author, pages, read)
+    book = new newBook(title, author, pages, read)
     myBook.push(book)
+    addBook()
+    
 }
 
 
@@ -118,3 +123,66 @@ addBookButton.addEventListener("click", ()=>{
         fixedContainer.classList.remove("none")
     },1)
 })
+
+const bookContainer = document.querySelector("section#book-container")
+const allDiv = Array.from(bookContainer.querySelectorAll("div")) ;
+
+function addBook(){
+        
+    let div = document.createElement("div")
+    bookContainer.appendChild(div)
+
+    let span = document.createElement("span")
+    span.setAttribute("id", "remove-book")
+    div.appendChild(span)
+    
+    let heading = document.createElement("h5")
+    heading.textContent = book.title
+    div.appendChild(heading)
+    
+
+    for(let i = 0; i < 3; i++){
+        let p = document.createElement("p")
+        if(i === 0){
+            p.textContent = book.author
+            div.appendChild(p)
+        }else if(i === 1){
+            p.textContent = book.pages
+            div.appendChild(p)
+        }else if(i === 2){
+            p.textContent = ""
+            div.appendChild(p)
+            for(let i = 0; i < 2; i++){
+                let span = document.createElement("span")
+                if(i === 0){
+                    p.appendChild(span)
+                    span.textContent = "Read Status : "
+                }else if(i === 1){
+                    for(let i = 0; i < 2; i++){
+                        let button = document.createElement("button")
+                        if(i === 0){
+                            if(book.readStatus){
+                                button.classList.add("yes", "confirm-read")
+                            }else{
+                                button.classList.add("yes", "not-confirm")
+                            }
+                            span.appendChild(button)   
+                        }else if( i === 1 ){
+                            if(!book.readStatus){
+                                button.classList.add("no", "confirm-read")
+                            }else{
+                                button.classList.add("no", "not-confirm")
+                            }
+                            span.appendChild(button)
+                        }    
+                    }
+                    p.appendChild(span)
+                }
+
+            }
+        }
+    }
+    allDiv.push(div)
+    deleteBuku()
+}
+
