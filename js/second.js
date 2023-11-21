@@ -81,7 +81,7 @@ function deleteSelect(){
 }
 
 // event & function to delete all the book
-const deleteAllBookButton = document.querySelector("header#header > section > #desc > div > :last-child")
+const deleteAllBookButton = document.querySelector("#right-container> :last-child")
 deleteAllBookButton.addEventListener("click", deleteAllBook)
 
 function deleteAllBook(){
@@ -109,13 +109,6 @@ function printTime(){
     let second = now.getSeconds().toString().padStart(2, "0")
     
     middleNav.textContent = `${hour}:${minute}:${second}`
-    
-    function opacity(){
-        middleNav.style.opacity = "0"
-        setTimeout(()=>{
-            middleNav.style.opacity = "1"
-        },5)
-    }
 }
 
 let timeNow = setInterval(printTime, 1000)

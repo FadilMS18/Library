@@ -11,6 +11,7 @@
     padding:0 5%;
     color:white;
     transition: .3s;
+    position: relative;
 }
 
 #nav-container.fix{
@@ -46,7 +47,8 @@
     padding:5px 10px;
     box-shadow: var(--def_bxs_white); 
     transition: .3s;
-    opacity: 1;
+    position: absolute;
+    left:45%;
 }
 #nav-container > #middle-container:hover{
     transform: scale(1.1);
@@ -68,13 +70,47 @@
 
 #right-container{
     display: flex;
-    gap:20px;
+    gap:50px;
 }
 
-#right-container > p{
-    border: 2px solid black;
-    padding:10px 20px;
+#right-container > button{
+    padding:10px 15px;
+    font-size: 1rem;
+
+    border:none;
+    border-radius:5px;
+    box-shadow: var(--def_bxs_black_small);
+    cursor: pointer;
+    transition: .15s;
+
+    color:var(--def_font_color);
 }
+
+#right-container > button:first-child{
+    background-color: rgb(61, 255, 61);
+    border:2px solid rgb(61, 255,61);
+}
+
+
+#right-container > button:first-child:hover{
+    transform: scale(1.1);
+    background-color: white;
+    color: rgb(0, 155, 0);
+    box-shadow:var(--def_bxs_white);
+}
+
+#right-container > button:last-child{
+    background-color: red;
+    border: red 2px solid;
+}
+
+#right-container > button:last-child:hover{
+    transform: scale(1.2);
+    background-color: white;
+    color: red;
+    box-shadow:var(--def_bxs_white);
+}
+
 
 header#header{
     height: 500px;
@@ -129,39 +165,5 @@ header#header > section > div#desc > div{
     gap:40px;
 }
 
-header#header > section > div#desc > div > button{
-    padding:10px 15px;
-    font-size: 1rem;
 
-    border:none;
-    border-radius:5px;
-    box-shadow: var(--def_bxs_black_small);
-    cursor: pointer;
-    transition: .15s;
 
-    color:var(--def_font_color);
-}
-
-header#header > section > div#desc > div > button:first-child{
-    background-color: rgb(61, 255, 61);
-    border:2px solid rgb(61, 255,61);
-}
-
-header#header > section > div#desc > div > button:first-child:hover{
-    transform: scale(1.1);
-    background-color: white;
-    color: rgb(0, 155, 0);
-    box-shadow:var(--def_bxs_black_big);
-}
-
-header#header > section > div#desc > div > button:last-child{
-    background-color: red;
-    border: red 2px solid;
-}
-
-header#header > section > div#desc > div > button:last-child:hover{
-    transform: scale(1.2);
-    background-color: white;
-    color: red;
-    box-shadow:var(--def_bxs_black_big);
-}

@@ -42,6 +42,16 @@ main > section > :first-child{
     text-shadow: 0px 0px 10px rgba(0, 0, 0, .3);
 }
 
+main > section > :first-child:not(:only-child)::after{
+    content: "My BookShelf";
+}
+
+main > section > :first-child:only-child::after{
+    content: "You don't have a book, add new book to display it down here :";
+}
+
+
+
 main > section > div{
     /* background: linear-gradient(to left top, var(--highlight_color), bisque); */
     border-radius:5px;
