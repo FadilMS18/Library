@@ -2,10 +2,6 @@ const body = document.querySelector("body")
 
 const myBook = []
 
-const yesButton = document.querySelector("#book-container > div > p:last-of-type > :last-child > button:first-child")
-const noButton = document.querySelector("#book-container > div > p:last-of-type > :last-child > button:last-child")
-
-
 function newBook(a, b, c, d){
     this.title = a
     this.author = b
@@ -24,7 +20,6 @@ function addBookToLibrary(a, b, c, d){
     addBook()
     
 }
-
 
 
 const checkBox = document.querySelector(`input[type="checkbox"]`)
@@ -83,7 +78,6 @@ function resetForm(){
             input.checked = false
             resetValue()
         })
-        console.log(myBook)
     },1)
 
     setTimeout(()=>{
@@ -163,6 +157,7 @@ function addBook(){
                         if(i === 0){
                             if(book.readStatus){
                                 button.classList.add("yes", "confirm-read")
+                                div.classList.add("read")
                             }else{
                                 button.classList.add("yes", "not-confirm")
                             }
@@ -170,6 +165,7 @@ function addBook(){
                         }else if( i === 1 ){
                             if(!book.readStatus){
                                 button.classList.add("no", "confirm-read")
+                                div.classList.add("not-read")
                             }else{
                                 button.classList.add("no", "not-confirm")
                             }
@@ -183,6 +179,9 @@ function addBook(){
         }
     }
     allDiv.push(div)
-    deleteBuku()
+    setTimeout(()=>{
+        deleteBook()
+    },10)   
 }
+
 

@@ -43,7 +43,7 @@ main > section > :first-child{
 }
 
 main > section > div{
-    background: linear-gradient(to left top, var(--highlight_color), bisque);
+    /* background: linear-gradient(to left top, var(--highlight_color), bisque); */
     border-radius:5px;
     box-shadow: var(--def_bxs_black_small);
     width: 100%;
@@ -65,8 +65,27 @@ main > section > div.noneDisplay{
     scale: 1.2;
 }
 
+main > section > div.read{
+    background: linear-gradient(to right top, white, lightgreen);
+}
+
+main > section > div.not-read{
+    background: linear-gradient(to left top, white, lightcoral);
+}
+
 main >section > div:hover{
     transform: scale(1.01);
+}
+
+main >header + section#book-container > div:empty{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:100%;
+    
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
 

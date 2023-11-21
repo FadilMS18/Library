@@ -1,56 +1,50 @@
+// first initiate for the program
+deleteBook()
 
-
-
-
-
+// Function to change readStatus
 function checkYesButton(){
-    if(this.classList.contains("not-confirm") && noButton.classList.contains("not-confirm")){
-        this.classList.remove("not-confirm")
-        this.classList.add("confirm-read")
-        return  
-    }
+    // This will select the card container
+    let divParentClass = this.parentNode.parentNode.parentNode.classList
 
+    
     if(this.classList.contains("confirm-read") && noButton.classList.contains("not-confirm")){
-        this.classList.remove("confirm-read")
-        this.classList.add("not-confirm")
-        return
+        return;
     }
-
-    if(noButton.classList.contains("confirm-read") && this.classList.contains("not-confirm")){
-        noButton.classList.remove("confirm-read")
+    else if(this.classList.contains("not-confirm") && noButton.classList.contains("confirm-read")){
         this.classList.remove("not-confirm")
+        noButton.classList.remove("confirm-read")
+        divParentClass.remove("not-read")
+
         this.classList.add("confirm-read")
         noButton.classList.add("not-confirm")
-        return
-    }
+        divParentClass.add("read") 
+
+    }else return
+    
 }
 
 function checkNoButton(){
-    
-    if(this.classList.contains("not-confirm") && yesButton.classList.contains("not-confirm")){
-        this.classList.remove("not-confirm")
-        this.classList.add("confirm-read")
-        return;
-        
-    }
+    // this will select the card container
+    let divParentClass = this.parentNode.parentNode.parentNode.classList
 
     if(this.classList.contains("confirm-read") && yesButton.classList.contains("not-confirm")){
-        this.classList.remove("confirm-read")
-        this.classList.add("not-confirm")
         return;
     }
-
-    if(yesButton.classList.contains("confirm-read") && this.classList.contains("not-confirm")){
-        yesButton.classList.remove("confirm-read")
+    else if(this.classList.contains("not-confirm") && yesButton.classList.contains("confirm-read")){
         this.classList.remove("not-confirm")
+        yesButton.classList.remove("confirm-read")
+        divParentClass.remove("read")
+
         this.classList.add("confirm-read")
         yesButton.classList.add("not-confirm")
-        return
-    }
+        divParentClass.add("not-read")
+        
+    }else return
+    
 }
 
 
-function deleteBuku(){
+function deleteBook(){
     for(let i = 0; i < allDiv.length; i++ ){
         allDiv[i].removeEventListener("mouseover", divClickHandler)
         allDiv[i].addEventListener("mouseover", divClickHandler)
@@ -60,11 +54,11 @@ function deleteBuku(){
 function divClickHandler(){
     let remove = this.querySelector("#remove-book")
 
-    let yesButton = this.querySelector("p:last-of-type > :last-child > button:first-child")
-    let noButton = this.querySelector("p:last-of-type > :last-child > button:last-child")
+    yesButton = this.querySelector("p:last-of-type > :last-child > button:first-child")
+    noButton = this.querySelector("p:last-of-type > :last-child > button:last-child")
 
-    remove.removeEventListener("click", consoler)
-    remove.addEventListener("click", consoler)
+    remove.removeEventListener("click", deleteSelect)
+    remove.addEventListener("click", deleteSelect)
 
     yesButton.removeEventListener("click", checkYesButton)
     yesButton.addEventListener("click", checkYesButton)
@@ -75,14 +69,73 @@ function divClickHandler(){
 
 
 
-function consoler(){
+function deleteSelect(){
     setTimeout(()=>{
         this.parentNode.classList.add("noneDisplay")
+        let index = allDiv.indexOf(this.parentNode)
+        allDiv.splice(index, 1)
     })
     setTimeout(()=>{
         bookContainer.removeChild(this.parentNode)
     },200)
 }
 
+// event & function to delete all the book
+const deleteAllBookButton = document.querySelector("header#header > section > #desc > div > :last-child")
+deleteAllBookButton.addEventListener("click", deleteAllBook)
 
-deleteBuku()
+function deleteAllBook(){
+    allDiv.forEach((div)=>{
+        setTimeout(()=>{
+            div.classList.add("noneDisplay")
+        },1)
+        setTimeout(()=>{
+            bookContainer.removeChild(div)
+        },200)
+        setTimeout(()=>{
+            allDiv.splice(0, allDiv.length) // delete all div in array
+        },1)
+    })
+}
+
+
+// Clock in the middle of navbar
+let middleNav = document.querySelector("nav#nav-container > h1 + span")
+
+function printTime(){
+    let now = new Date()
+    let hour = now.getHours().toString().padStart(2, "0")
+    let minute = now.getMinutes().toString().padStart(2, "0") 
+    let second = now.getSeconds().toString().padStart(2, "0")
+    
+    middleNav.textContent = `${hour}:${minute}:${second}`
+    
+    function opacity(){
+        middleNav.style.opacity = "0"
+        setTimeout(()=>{
+            middleNav.style.opacity = "1"
+        },5)
+    }
+}
+
+let timeNow = setInterval(printTime, 1000)
+
+
+// Add Style to navbar if the user scroll the page
+const navbar = document.querySelector("nav#nav-container")
+const scrollCollapse = 30
+function handleScroll(){
+    if(window.scrollY > scrollCollapse){
+        setTimeout(()=>{
+            navbar.classList.value = "fix-stick"
+        },1)
+    }else{
+        setTimeout(() => {
+            navbar.classList.value = "fix"    
+        }, 1);
+    }
+}
+
+window.addEventListener("scroll", handleScroll)
+
+
