@@ -132,3 +132,4 @@ function handleScroll(){
 window.addEventListener("scroll", handleScroll)
 
 
+let dialog = document.querySelector("dialog")

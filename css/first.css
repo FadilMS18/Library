@@ -32,13 +32,19 @@ body{
     background-color: rgb(240, 240, 240);
 }
 
-#container-form{
-    width:100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, .5);
-    justify-content: center;
-    align-items: center;
+dialog{
+    display: none;
+}
+
+dialog[open]{
+    /* width:100vw;
+    height: 100vh; */
+    /* background-color: rgba(0, 0, 0, .5); */
+    display: block;
+    /*justify-content: center;
+    align-items: center; */
     transition: .35s;
+    z-index:99999;
 }
 
 
@@ -49,12 +55,6 @@ body{
     pointer-events: none;
 }
 
-.fixed{
-    display: flex;
-    position: fixed;
-    top:0;
-    z-index: 99999;
-}
 
 #form{
     background-color: lightgreen;
@@ -69,7 +69,6 @@ body{
     gap:50px;
     padding:90px 30px 50px;
     
-    position: absolute;
     box-shadow:0px 0px 15px 1px rgba(255, 255, 255, .2);
 }
 

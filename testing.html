@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *:not(dialog){
+            margin:0;
+            padding:0;
+        }
+        dialog{
+            background-color: red;
+            padding:0;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+        }
+        dialog[open]::backdrop{
+            background-color: rgba(0, 0, 0, .5);
+            /* justify-self: center; */
+        }
+        form{
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <dialog id="dialog" open>
+        <form>
+            <h1>Judul</h1>
+            <button id="close">Confirm</button>
+        </form>
+    </dialog>
+
+    <button id="open">open</button>
+
+    <script>
+        let dialog = document.querySelector("#dialog")
+        let closed = document.querySelector("#close") 
+        let opened = document.querySelector("#open")
+        let form = document.querySelector("form")
+        
+        closed.addEventListener("click", (e)=>{
+            e.preventDefault()
+            dialog.close()
+        })
+        opened.addEventListener("click", ()=>{
+            
+            dialog.showModal()
+        })
+    </script>
+</body>
+</html>

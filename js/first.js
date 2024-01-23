@@ -114,7 +114,7 @@ const addBookButton = document.querySelector("#right-container > :first-child")
 
 addBookButton.addEventListener("click", ()=>{
     setTimeout(()=>{
-        fixedContainer.classList.remove("none")
+        document.querySelector("dialog").showModal()
     },1)
 })
 
