@@ -81,7 +81,7 @@ function deleteSelect(){
 }
 
 // event & function to delete all the book
-const deleteAllBookButton = document.querySelector("#right-container> :last-child")
+const deleteAllBookButton = document.querySelector("#delete-button")
 deleteAllBookButton.addEventListener("click", deleteAllBook)
 
 function deleteAllBook(){
@@ -116,15 +116,15 @@ let timeNow = setInterval(printTime, 1000)
 
 // Add Style to navbar if the user scroll the page
 const navbar = document.querySelector("nav#nav-container")
-const scrollCollapse = 30
+const scrollCollapse = 5
 function handleScroll(){
     if(window.scrollY > scrollCollapse){
         setTimeout(()=>{
-            navbar.classList.value = "fix-stick"
+            navbar.classList.value = "stick"
         },1)
     }else{
         setTimeout(() => {
-            navbar.classList.value = "fix"    
+            navbar.classList.value = "absolute"    
         }, 1);
     }
 }

@@ -107,7 +107,7 @@ function checkValue(){
 }
 
 
-const addBookButton = document.querySelector("#right-container > :first-child")
+const addBookButton = document.querySelector("#add-button")
 
 addBookButton.addEventListener("click", ()=>{
     setTimeout(()=>{
