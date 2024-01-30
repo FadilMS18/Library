@@ -24,7 +24,10 @@ function addBookToLibrary(a, b, c, d){
 
 const checkBox = document.querySelector(`input[type="checkbox"]`)
 
-// Form container(absolute layer), not the fixed layer
+// Dialog Element
+let dialog = document.querySelector("dialog")
+
+// Form container inside the dialog
 const formContainer = document.querySelector("div#form")
 
 // Input Selector
@@ -39,7 +42,7 @@ infoContainer.forEach((but)=>{
     let bel = but.querySelector("label")
     label.push(bel)  
 })
-label.pop(label.length-1)
+label.pop(label.length - 1)
 
 // EventListener for every input
 function checkInputValue(){
@@ -79,15 +82,9 @@ function resetForm(){
             resetValue()
         })
     },1)
-
-    setTimeout(()=>{
-        fixedContainer.classList.add("none")
-    },1)
-    
+    dialog.close()
 }
 
-// Fixed container for the form
-const fixedContainer = document.querySelector("div#container-form")
 
 
 // Reset the title class

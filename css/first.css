@@ -7,12 +7,14 @@
     --highlight_color : rgba(255, 140, 0)
 
 }
-*{
+*:not(dialog){
     margin:0;
     padding:0;
     box-sizing: border-box;
     color: var(--def_font_color);
 }
+
+
 
 input{
     outline: none;
@@ -32,29 +34,70 @@ body{
     background-color: rgb(240, 240, 240);
 }
 
+/* Dialog Start */
 dialog{
-    display: none;
+    padding: 0;
+    border: none;
+    animation: dialogClose .45s ;
+    background-color: rgba(0, 0, 0, .05);
+}
+
+dialog::backdrop{
+    animation: backdropClose .45s
 }
 
 dialog[open]{
-    /* width:100vw;
-    height: 100vh; */
-    /* background-color: rgba(0, 0, 0, .5); */
-    display: block;
-    /*justify-content: center;
-    align-items: center; */
-    transition: .35s;
-    z-index:99999;
+    animation: dialogOpen .45s ;
 }
 
-
-.none{
-    opacity: 0;
-    display: none;
-    z-index: 0;
-    pointer-events: none;
+dialog[open]::backdrop{
+    animation: backdropOpen .45s forwards;
 }
 
+@keyframes dialogOpen {
+    0%{
+        display: none;
+        opacity: 0;
+        scale: 0;
+    }
+    100%{
+        display: block;
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes dialogClose {
+    0%{
+        display: block;
+        opacity : 1;
+        scale: 1;
+    }
+    100%{
+        display: none;
+        opacity:0;
+        scale: 0;
+    }
+}
+
+@keyframes backdropOpen {
+    0%{
+        background-color: rgba(0, 0, 0, 0);
+    }
+    100%{
+        background-color: rgba(0, 0, 0, .4);
+    }
+}
+
+@keyframes backdropClose {
+    0%{
+        background-color: rgba(0, 0, 0,.4);
+    }
+    100%{
+        background-color: rgba(0 ,0 ,0 ,0);
+    }
+}
+/* Dialog End */
 
 #form{
     background-color: lightgreen;
@@ -159,3 +202,4 @@ button#confirm:hover{
     transform: scale(1.2);
     box-shadow: var(--def_bxs_white);
 }
+
