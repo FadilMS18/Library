@@ -28,33 +28,60 @@ nav.absolute{
     height:75px
 }
 nav.absolute > h1{
-    color: black;
+    color: white;
 }
 
 nav > h1{
     color: rgb(255, 242, 217);
 }
 
-nav > button:first-of-type{
-    background-color: rgba(0,0,0,0);
-    border:none;
+nav > div:first-of-type{
+    padding:0 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
     color: white;
     font-size: 1.2rem;
     cursor: pointer;
-    /* transition: .25s; */
-    padding: 0 0 20px; 
 }
-nav > button:first-of-type:hover{
-    animation: addHover .55s forwards;
+nav > div:first-of-type:hover{
+    animation: addHoverButton .55s forwards;
+}
+nav > div:last-of-type{
+    padding:0 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+nav > div:last-of-type:hover{
+    animation: deleteHoverButton .55s forwards;
 }
 
-@keyframes addHover {
+
+
+@keyframes addHoverButton {
     0%{
-        box-shadow: 0px 0px 0 0 hsl(180, 100%, 50%,0) ;
+        box-shadow:inset 0px 0px 0 0 hsl(180, 100%, 50%,0) ;
+        background-color: rgba(255, 255, 255, .0);
     }
     100%{
-        box-shadow: 0px 5px 5px -1px  rgb(0, 255, 255, .5);
+        background-color: rgba(255, 255, 255, .1);
+        box-shadow:inset 0px -9px 5px -3.5px  hsl(120, 73%, 75%);
         
+    }
+}
+
+@keyframes deleteHoverButton{
+    0%{
+        background-color: rgba(0, 0, 0, 0);
+        box-shadow: inset 0px 0px 0 0 rgba(0, 0, 0, 0)
+    }
+    100%{
+        background-color: rgba(255, 255, 255, .1);
+        box-shadow:inset 0px -9px 5px -3.5px rgb(255, 98, 98)
     }
 }
 

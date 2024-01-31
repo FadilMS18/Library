@@ -43,7 +43,6 @@ function checkNoButton(){
     
 }
 
-
 function deleteBook(){
     for(let i = 0; i < allDiv.length; i++ ){
         allDiv[i].removeEventListener("mouseover", divClickHandler)
@@ -66,8 +65,6 @@ function divClickHandler(){
     noButton.removeEventListener("click", checkNoButton)
     noButton.addEventListener("click", checkNoButton)
 }
-
-
 
 function deleteSelect(){
     setTimeout(()=>{
@@ -97,22 +94,6 @@ function deleteAllBook(){
         },1)
     })
 }
-
-
-// Clock in the middle of navbar
-let middleNav = document.querySelector("nav#nav-container > h1 + span")
-
-function printTime(){
-    let now = new Date()
-    let hour = now.getHours().toString().padStart(2, "0")
-    let minute = now.getMinutes().toString().padStart(2, "0") 
-    let second = now.getSeconds().toString().padStart(2, "0")
-    
-    middleNav.textContent = `${hour}:${minute}:${second}`
-}
-
-let timeNow = setInterval(printTime, 1000)
-
 
 // Add Style to navbar if the user scroll the page
 const navbar = document.querySelector("nav#nav-container")

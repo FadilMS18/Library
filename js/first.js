@@ -2,11 +2,13 @@ const body = document.querySelector("body")
 
 const myBook = []
 
-function newBook(a, b, c, d){
-    this.title = a
-    this.author = b
-    this.pages = c
-    this.readStatus = d
+class NewBook{
+    constructor(a, b, c, d){
+        this.title = a
+        this.author = b
+        this.pages = c
+        this.readStatus = d
+    }
 }
 
 function addBookToLibrary(a, b, c, d){
@@ -15,10 +17,9 @@ function addBookToLibrary(a, b, c, d){
     let pages = c.value
     let read = d.checked ? true : false
 
-    book = new newBook(title, author, pages, read)
+    book = new NewBook(title, author, pages, read)
     myBook.push(book)
-    addBook()
-    
+    addBook()   
 }
 
 
